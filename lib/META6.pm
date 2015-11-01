@@ -1,8 +1,8 @@
 use v6;
 
-use JSON::Fast;
+use JSON::Class;
 
-class META6 {
+class META6 does JSON::Class {
 
     class Resource {
 
