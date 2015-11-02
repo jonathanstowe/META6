@@ -4,6 +4,19 @@ use JSON::Class;
 
 class META6 does JSON::Class {
 
+    multi method new(Str :$file!) {
+        self.new(file => $file.IO);
+    }
+
+    multi method new(IO::Path :$file!) {
+        self.new(file => $file.open);
+    }
+
+    multi method new(IO::Handle :$file!) {
+        my $json = $file.slurp-rest;
+        self.from-json($json);
+    }
+
     class Resource {
 
     }
