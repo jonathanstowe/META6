@@ -2,6 +2,10 @@ use v6;
 
 use JSON::Class;
 
+# Need to import here to get the traits
+import JSON::Marshal;
+import JSON::Unmarshal;
+
 class META6 does JSON::Class {
 
     multi method new(Str :$file!) {
@@ -22,12 +26,21 @@ class META6 does JSON::Class {
     }
 
     class Support {
-
     }
 
-    has Version     $.perl          is rw;
+    # cope with "v0.0.1"
+    sub unmarsh-version(Str() $v) returns Version {
+        my $ver = Version.new($v);
+        if $ver.parts[0] eq 'v' {
+            $ver.parts.shift;
+        }
+        $ver;
+    }
+
+
+    has Version     $.perl          is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version);
     has Str         $.name          is rw;
-    has Version     $.version       is rw;
+    has Version     $.version       is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version);
     has Str         $.description   is rw;
     has Str         @.authors       is rw;
     has Str         %.provides      is rw;
