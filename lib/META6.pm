@@ -19,13 +19,18 @@ class META6 does JSON::Class {
     }
 
     role MetaAttribute::Customary does MetaAttribute {
-
+        has Str $.where is rw;
     }
 
     multi sub trait_mod:<is> (Attribute $a, Optionality :$specification!) {
-
         $a does MetaAttribute::Specfication;
         $a.optionality = $specification // Optional;
+    }
+
+    multi sub trait_mod:<is> (Attribute $a, :$customary ) {
+        $a does MetaAttribute::Customary;
+        $a.optionality = Optional;
+        $a.where = $customary ~~ Str ?? $customary !! 'unknown';
     }
 
     multi method new(Str :$file!) {
@@ -41,11 +46,13 @@ class META6 does JSON::Class {
         self.from-json($json);
     }
 
-    class Resource {
-
-    }
-
     class Support {
+        has Str $.source is rw is specification(Optional);
+        has Str $.bugtracker is rw is specification(Optional);
+        has Str $.email is rw is specification(Optional);
+        has Str $.mailinglist is rw is specification(Optional);
+        has Str $.irc is rw is specification(Optional);
+        has Str $.phone is rw is specification(Optional);
     }
 
     # cope with "v0.0.1"
@@ -71,11 +78,13 @@ class META6 does JSON::Class {
     has Str         %.excludes      is rw is specification(Optional);
     has Str         @.build-depends is rw is specification(Optional);
     has Str         @.test-depends  is rw is specification(Optional);
-    has Resource    $.resource      is rw is specification(Optional);
+    has             %.resource      is rw is specification(Optional);
     has Support     $.support       is rw is specification(Optional);
     has Bool        $.production    is rw is specification(Optional);
     has Str         $.license       is rw is specification(Optional);
     has Str         @.tags          is rw is specification(Optional);
+    has Str         $.source-url    is rw is customary;
+    has Str         $.auth          is rw is customary;
 }
 
 # vim: expandtab shiftwidth=4 ft=perl6
