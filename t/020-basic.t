@@ -28,6 +28,14 @@ my $h = from-json($json);
 is $h<version>, "0.0.1", "version is right";
 is $h<perl>, "6", "perl is right";
 
+for $obj.^attributes -> $attr {
+    if $attr.has-accessor {
+
+        ok $attr.^does(META6::MetaAttribute), "attribute { $attr.name } has the trait";
+
+    }
+}
+
 
 done-testing;
 # vim: expandtab shiftwidth=4 ft=perl6
