@@ -153,7 +153,10 @@ class META6:ver<v0.0.3>:auth<github:jonathanstowe> does JSON::Class {
         self.new(:$json);
     }
 
+    my Bool $seen-vee = False;
+
     multi method new(Str:D :$json!) {
+        $seen-vee = False;
         self.from-json($json);
     }
 
@@ -171,6 +174,8 @@ class META6:ver<v0.0.3>:auth<github:jonathanstowe> does JSON::Class {
         my $ver = Version.new($v);
         if $ver.parts[0] eq 'v' {
             $ver.parts.shift;
+            warn 'prefix "v" seen in version string, this may not be what you want' unless $seen-vee;
+            $seen-vee = True;
         }
         $ver;
     }
