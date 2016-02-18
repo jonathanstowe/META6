@@ -97,7 +97,7 @@ exception.
 use JSON::Name;
 use JSON::Class:ver(v0.0.5..*);
 
-class META6:ver<0.0.5>:auth<github:jonathanstowe> does JSON::Class {
+class META6:ver<0.0.6>:auth<github:jonathanstowe> does JSON::Class {
 
     enum Optionality <Mandatory Optional>;
 
