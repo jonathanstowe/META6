@@ -157,6 +157,10 @@ class META6:ver<0.0.7>:auth<github:jonathanstowe> does JSON::Class {
         self.from-json($json);
     }
 
+    multi method new(*%items) {
+        self.bless(|%items);
+    }
+
     class Support {
         has Str $.source is rw      is specification(Optional);
         has Str $.bugtracker is rw  is specification(Optional) is json-skip-null;
@@ -167,7 +171,7 @@ class META6:ver<0.0.7>:auth<github:jonathanstowe> does JSON::Class {
     }
 
     # cope with "v0.0.1"
-    sub unmarsh-version(Str() $v) returns Version {
+    sub unmarsh-version(Str() $v ) returns Version {
         my $ver = Version.new($v);
         if $ver.parts[0] eq 'v' {
             my @parts = $ver.parts;
@@ -180,8 +184,8 @@ class META6:ver<0.0.7>:auth<github:jonathanstowe> does JSON::Class {
     }
 
 
-    has Version     $.meta6          is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) = Version.new(0);
-    has Version     $.perl          is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory);
+    has Version     $.meta6         is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) = Version.new(0);
+    has Version     $.perl-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory) is json-name('perl');
     has Str         $.name          is rw is specification(Mandatory);
     has Version     $.version       is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory);
     has Str         $.description   is rw is specification(Mandatory);
