@@ -199,7 +199,7 @@ class META6:ver<0.0.8>:auth<github:jonathanstowe> does JSON::Class {
     has Str         %.excludes      is rw is specification(Optional);
     has Str         @.build-depends is rw is specification(Optional);
     has Str         @.test-depends  is rw is specification(Optional);
-    has             %.resource      is rw is specification(Optional);
+    has Str         @.resources     is rw is specification(Optional);
     has Support     $.support       is rw is specification(Optional) = Support.new;
     has Bool        $.production    is rw is specification(Optional) is json-skip-null;
     has Str         $.license       is rw is specification(Optional);
