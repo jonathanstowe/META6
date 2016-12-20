@@ -4,6 +4,7 @@ use v6;
 
 use Test;
 use META6;
+use JSON::Class;
 
 my constant Projects = Array[META6] but JSON::Class;
 
