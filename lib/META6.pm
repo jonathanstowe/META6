@@ -39,6 +39,10 @@ my $m = META6.new(   name        => 'META6',
 
 print $m.to-json;
 
+my $m = META6.new('./META6.json');
+$m<version description> = v0.0.2, 'Work with Perl 6 META files even better';
+spurt('./META6.json', $m.to-json);
+
 =end code
 
 =head1 DESCRIPTION
@@ -92,12 +96,24 @@ representation of the META info. The class should prevent there being
 anything that can't be represented as JSON so it shouldn't throw an
 exception.
 
+=head2 method AT-KEY
+
+    method AT-KEY($key)
+
+Support method to allow subscripts on META6 objects.
+
+=head2 method EXISTS-KEY
+
+    method EXISTS-KEY($key)
+
+Support method to allow subscripts on META6 objects.
+
 =end pod
 
 use JSON::Name;
 use JSON::Class:ver(v0.0.5..*);
 
-class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class {
+class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class does Associative {
 
     enum Optionality <Mandatory Optional>;
 
@@ -159,6 +175,14 @@ class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class {
 
     multi method new(*%items) {
         self.bless(|%items);
+    }
+
+    method AT-KEY($key){
+        self.^has($key)
+    }
+
+    method EXISTS-KEY($key){
+        ?self.^has($key)
     }
 
     class Support {
