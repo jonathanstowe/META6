@@ -113,7 +113,7 @@ Support method to allow subscripts on META6 objects.
 use JSON::Name;
 use JSON::Class:ver(v0.0.5..*);
 
-class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class does Associative {
+class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class {
 
     enum Optionality <Mandatory Optional>;
 
@@ -178,11 +178,22 @@ class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class does Associa
     }
 
     method AT-KEY($key){
-        self.^has($key)
+        self!json-name-to-attibute($key).?get_value(self);
     }
 
     method EXISTS-KEY($key){
-        ?self.^has($key)
+        so self!json-name-to-attibute($key)
+    }
+
+    method ASSIGN-KEY($key, \value){
+        self!json-name-to-attibute($key).set_value(self, value)
+    }
+
+    method !json-name-to-attibute($json-name){
+        state %lookup = do for self.^attributes(:local) {
+            (.?json-name ?? .json-name !! .name).subst(/^ '$!' | '%!' | '@!' /, '') => $_
+        }
+        %lookup{$json-name}
     }
 
     class Support {
@@ -231,5 +242,7 @@ class META6:ver<0.0.10>:auth<github:jonathanstowe> does JSON::Class does Associa
     has Str         $.source-url    is rw is customary;
     has Str         $.auth          is rw is customary;
 }
+
+multi sub postcircumfix:<{ }>(META6 \SELF, Iterable \key, Mu \ASSIGN) is raw {}
 
 # vim: expandtab shiftwidth=4 ft=perl6
