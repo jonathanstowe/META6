@@ -1,5 +1,7 @@
 # META6
 
+[![Build Status](https://travis-ci.org/jonathanstowe/META6.svg?branch=master)](https://travis-ci.org/jonathanstowe/META6)
+
 Do things with Perl 6 [META files](http://design.perl6.org/S22.html#META6.json)
 
 ## Synopsis
@@ -32,6 +34,9 @@ my $m = META6.new(   name        => 'META6',
 
 print $m.to-json;
 
+my $m = META6.new('./META6.json');
+$m<version description> = v0.0.2, 'Work with Perl 6 META files even better';
+spurt('./META6.json', $m.to-json);
 ```
 ## Description
 
