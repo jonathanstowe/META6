@@ -9,12 +9,13 @@ use META6;
 
 my IO::Path $data-dir = $*PROGRAM.parent.child("data");
 
-my IO::Path $meta-path = $data-dir.child('META.info');
+my IO::Path $meta-path = $data-dir.child('META6.json');
 
 my $obj;
 
 lives-ok { $obj = META6.new(file => $meta-path) }, "load META.info";
 
+is $obj.version, '0.0.1', "just check version";
 is $obj<version>, '0.0.1', 'Hash get good version';
 is $obj<version perl>, '0.0.1 6', 'Hash get list of keys';
 
