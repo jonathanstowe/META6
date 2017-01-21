@@ -15,7 +15,6 @@ my $obj;
 
 lives-ok { $obj = META6.new(file => $meta-path) }, "load META.info";
 
-dd $obj;
 is $obj<version>, '0.0.1', 'Hash get good version';
 is $obj<version perl>, '0.0.1 6', 'Hash get list of keys';
 
