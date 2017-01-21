@@ -13,9 +13,6 @@ my IO::Path $meta-path = $data-dir.child('projects.json');
 
 my $json = $meta-path.slurp;
 
-say Projects ~~ Positional;
-say Projects.of;
-
 my $projects;
 
 { 
