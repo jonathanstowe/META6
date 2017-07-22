@@ -134,7 +134,7 @@ role AutoAssoc {
     }
 }
 
-class META6:ver<0.0.15>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
+class META6:ver<0.0.16>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
 
     enum Optionality <Mandatory Optional>;
 
