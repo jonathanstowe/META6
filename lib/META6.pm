@@ -114,19 +114,19 @@ use JSON::Name;
 use JSON::Class:ver(v0.0.5+);
 
 role AutoAssoc {
-    method AT-KEY($key){
+    method AT-KEY($key) {
         self!json-name-to-attibute($key).?get_value(self);
     }
 
-    method EXISTS-KEY($key){
-        so self!json-name-to-attibute($key)
+    method EXISTS-KEY($key --> Bool) {
+        self.AT-KEY($key).defined
     }
 
-    method ASSIGN-KEY($key, \value){
+    method ASSIGN-KEY($key, \value) {
         self!json-name-to-attibute($key).set_value(self, value)
     }
 
-    method !json-name-to-attibute($json-name){
+    method !json-name-to-attibute($json-name) {
         state %lookup = do for self.^attributes(:local) {
             (.?json-name ?? .json-name !! .name).subst(/^ '$!' | '%!' | '@!' /, '') => $_
         }
