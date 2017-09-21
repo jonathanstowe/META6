@@ -123,7 +123,9 @@ role AutoAssoc {
     }
 
     method ASSIGN-KEY($key, \value) {
-        self!json-name-to-attibute($key).set_value(self, value)
+        if self!json-name-to-attibute($key) -> $attr {
+            $attr.set_value(self, value)
+        }
     }
 
     method !json-name-to-attibute($json-name) {
