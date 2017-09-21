@@ -129,7 +129,7 @@ role AutoAssoc {
     }
 
     method !json-name-to-attibute($json-name) {
-        state %lookup = do for self.^attributes(:local) {
+        state %lookup = do for self.^attributes(:local).grep({ $_.has_accessor }) {
             (.?json-name ?? .json-name !! .name).subst(/^ '$!' | '%!' | '@!' /, '') => $_
         }
         %lookup{$json-name}
