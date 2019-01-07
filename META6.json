@@ -15,7 +15,7 @@
   ],
   "auth": "github:jonathanstowe",
   "depends": [
-    "JSON::Class"
+    "JSON::Class:ver<0.0.5+>"
   ],
   "tags": [
     "devel",

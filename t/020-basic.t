@@ -28,7 +28,6 @@ my $h = from-json($json);
 
 is $h<version>, "0.0.1", "version is right";
 is $h<perl>, "6", "perl is right";
-todo "requires a feature of more recent JSON::Marshal";
 nok $h<excludes>:exists, "and it skipped excludes";
 
 for $obj.^attributes -> $attr {
