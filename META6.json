@@ -6,12 +6,10 @@
     "source": "git://github.com/jonathanstowe/META6.git",
     "bugtracker": "https://github.com/jonathanstowe/META6/issues"
   },
-  "perl": "6.c",
+  "perl": "6.*",
   "resources": [
-    
   ],
   "build-depends": [
-    
   ],
   "auth": "github:jonathanstowe",
   "depends": [
@@ -31,7 +29,8 @@
     "META6": "lib/META6.pm"
   },
   "production": true,
-  "version": "0.0.19",
+  "version": "0.0.20",
+  "api": "1.0",
   "authors": [
     "Jonathan Stowe <jns+git@gellyfish.co.uk>"
   ],

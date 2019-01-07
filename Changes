@@ -1,3 +1,6 @@
+v0.0.20		Mon  7 Jan 21:41:28 GMT 2019
+	* Fix for repeated typo of Specification from JJ
+	* Make auth spec and add api
 v0.0.19		Tue 12 Dec 20:22:29 GMT 2017
 	* Fix for constructor in examples from dmaestro
 v0.0.18		Thu Sep 21 20:31:25 2017 +0100 
