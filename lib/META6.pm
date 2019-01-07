@@ -145,7 +145,7 @@ class META6:ver<0.0.19>:auth<github:jonathanstowe> does JSON::Class does AutoAss
         has Version $.spec-version is rw = Version.new(0);
     }
 
-    role MetaAttribute::Specfication does MetaAttribute {
+    role MetaAttribute::Specification does MetaAttribute {
 
     }
 
@@ -163,7 +163,7 @@ class META6:ver<0.0.19>:auth<github:jonathanstowe> does JSON::Class does AutoAss
     }
 
     my sub set-specification(Attribute $a, Optionality $optionality = Optional, Version $spec-version = Version.new(0)) {
-        $a does MetaAttribute::Specfication;
+        $a does MetaAttribute::Specification;
         $a.optionality = $optionality // Optional;
         $a.spec-version = $spec-version // Version.new(0);
         $a;
