@@ -23,6 +23,7 @@
   "license": "Artistic-2.0",
   "test-depends": [
     "JSON::Fast",
+    "Terminal::ANSIColor",
     "Test"
   ],
   "provides": {
