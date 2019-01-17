@@ -32,7 +32,8 @@
   "version": "0.0.20",
   "api": "1.0",
   "authors": [
-    "Jonathan Stowe <jns+git@gellyfish.co.uk>"
+    "Jonathan Stowe <jns+git@gellyfish.co.uk>",
+    "Patrick Spek <p.spek@tyil.work>"
   ],
   "description": "Work with Perl 6 META files",
   "meta-version": "0"
