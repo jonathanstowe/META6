@@ -1,24 +1,23 @@
 {
-  "type": "layout",
   "children": [
     {
-      "type": "directory",
       "purpose": null,
+      "name": "examples",
+      "type": "directory",
       "children": [
         {
-          "type": "file",
-          "name": "my-meta.pl"
+          "name": "my-meta.pl",
+          "type": "file"
         }
-      ],
-      "name": "examples"
+      ]
     },
     {
-      "type": "directory",
+      "name": "t",
       "purpose": null,
+      "type": "directory",
       "children": [
         {
           "type": "directory",
-          "purpose": null,
           "children": [
             {
               "type": "file",
@@ -33,14 +32,19 @@
               "name": "META6.json"
             }
           ],
-          "name": "data"
+          "name": "data",
+          "purpose": null
         },
         {
-          "name": "030-versions.t",
-          "type": "file"
+          "type": "file",
+          "name": "030-versions.t"
         },
         {
-          "name": "015-constructor.t",
+          "type": "file",
+          "name": "015-constructor.t"
+        },
+        {
+          "name": "060-stringify.t",
           "type": "file"
         },
         {
@@ -59,27 +63,26 @@
           "type": "file",
           "name": "020-basic.t"
         }
-      ],
-      "name": "t"
+      ]
     },
     {
-      "name": "README.md",
-      "type": "file"
+      "type": "file",
+      "name": "README.md"
     },
     {
+      "purpose": null,
       "name": "lib",
       "children": [
         {
-          "type": "file",
-          "name": "META6.pm"
+          "name": "META6.pm",
+          "type": "file"
         }
       ],
-      "purpose": null,
       "type": "directory"
     },
     {
-      "name": "META6.json",
-      "type": "file"
+      "type": "file",
+      "name": "META6.json"
     },
     {
       "type": "file",
@@ -88,6 +91,11 @@
     {
       "name": "LICENCE",
       "type": "file"
+    },
+    {
+      "type": "file",
+      "name": "Makefile"
     }
-  ]
+  ],
+  "type": "layout"
 }
