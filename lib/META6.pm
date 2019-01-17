@@ -137,6 +137,17 @@ class META6:ver<0.0.20>:auth<github:jonathanstowe>:ver<1.0> does JSON::Class doe
     has Str         $.source-url    is rw is customary;
     has Str         $.auth          is rw is specification(Optional);
     has Str         $.api           is rw is specification(Optional) is json-skip-null;
+
+    method Str ()
+    {
+        my $identifier = "$!name";
+
+        $identifier ~= ":auth<{$!auth}>" if $!auth;
+        $identifier ~= ":version<{$!version}>" if $!version;
+        $identifier ~= ":api<{$!api}>" if $!api;
+
+        $identifier;
+    }
 }
 
 multi sub postcircumfix:<{ }>(META6 \SELF, Iterable \key, Mu \ASSIGN) is raw {}
