@@ -1,115 +1,5 @@
 use v6;
 
-=begin pod
-
-=head1 NAME
-
-META6 - Read, Parse, Generate Perl 6 META files.
-
-
-
-=head1 SYNOPSIS
-
-The below will generate the C<META.info> for this module.
-
-=begin code
-
-use META6;
-
-my $m = META6.new(   name        => 'META6',
-                     description => 'Work with Perl 6 META files',
-                     version     => Version.new('0.0.1'),
-                     perl        => Version.new('6'),
-                     depends     => <JSON::Class>,
-                     test-depends   => <Test>,
-                     tags        => <devel meta utils>,
-                     authors     => ['Jonathan Stowe <jns+git@gellyfish.co.uk>'],
-                     auth        => 'github:jonathanstowe',
-                     source-url  => 'git://github.com/jonathanstowe/META6.git',
-                     support     => META6::Support.new(
-                        source => 'git://github.com/jonathanstowe/META6.git'
-                     ),
-                     provides => {
-                        META6 => 'lib/META6.pm',
-                     },
-                     license     => 'Artistic-2.0',
-                     production  => False,
-
-                 );
-
-print $m.to-json;
-
-my $m = META6.new(file => './META6.json');
-$m<version description> = v0.0.2, 'Work with Perl 6 META files even better';
-spurt('./META6.json', $m.to-json);
-
-=end code
-
-=head1 DESCRIPTION
-
-This provides a representation of the Perl 6 L<META
-files|http://design.perl6.org/S22.html#META6.json> specification -
-the META file data can be read, created , parsed and written in a manner
-that is conformant with the specification.
-
-Where they are known about it also makes allowance for "customary"
-usage in existing software (such as installers and so forth.)
-
-The intent of this is allow the generation and testing of META files for
-module authors, so it can provide meta-information whether the attributes
-are mandatory as per the spec and where known the places that "customary"
-attributes are used, though this doesn't preclude it being used for other
-purposes.
-
-=head1 METHODS
-
-All of the available attributes are documented in the specification so I
-won't duplicate here, only documenting the methods provided by the
-module.
-
-=head2 method new
-
-    multi method new(Str :$file!)
-    multi method new(IO::Path :$file!)
-    multi method new(IO::Handle :$file!)
-    multi method new(Str:D :$json!)
-
-This is the contructor of the class, it can take a named argument C<file>
-which can be the name of a file, an L<IO::Path> representing or a
-L<IO::Handle> opened to a file containing the META json. Alternatively an
-argument C<json> can be supplied which should contain the JSON string to
-be parsed as META info.
-
-If the file doesn't exist, cannot be opened, cannot be read or does not
-contain valid JSON and exception will be thrown.
-
-Additionally there still is the default constructor (as shown in the
-L<SYNOPSIS|#SYNOPSIS>,) that allows the population of the attributes
-directly (which may be useful when generating a META file.)
-
-=head2 method to-json
-
-    method to-json() returns Str
-
-This is provided by L<JSON::Class>. It will return the JSON string
-representation of the META info. The class should prevent there being
-anything that can't be represented as JSON so it shouldn't throw an
-exception.
-
-=head2 method AT-KEY
-
-    method AT-KEY($key)
-
-Support method to allow subscripts on META6 objects.
-
-=head2 method EXISTS-KEY
-
-    method EXISTS-KEY($key)
-
-Support method to allow subscripts on META6 objects.
-
-=end pod
-
 use JSON::Name;
 use JSON::Class:ver(v0.0.5+);
 
@@ -250,5 +140,115 @@ class META6:ver<0.0.20>:auth<github:jonathanstowe>:ver<1.0> does JSON::Class doe
 }
 
 multi sub postcircumfix:<{ }>(META6 \SELF, Iterable \key, Mu \ASSIGN) is raw {}
+
+=begin pod
+
+=head1 NAME
+
+META6 - Read, Parse, Generate Perl 6 META files.
+
+
+
+=head1 SYNOPSIS
+
+The below will generate the C<META.info> for this module.
+
+=begin code
+
+use META6;
+
+my $m = META6.new(   name        => 'META6',
+                     description => 'Work with Perl 6 META files',
+                     version     => Version.new('0.0.1'),
+                     perl        => Version.new('6'),
+                     depends     => <JSON::Class>,
+                     test-depends   => <Test>,
+                     tags        => <devel meta utils>,
+                     authors     => ['Jonathan Stowe <jns+git@gellyfish.co.uk>'],
+                     auth        => 'github:jonathanstowe',
+                     source-url  => 'git://github.com/jonathanstowe/META6.git',
+                     support     => META6::Support.new(
+                        source => 'git://github.com/jonathanstowe/META6.git'
+                     ),
+                     provides => {
+                        META6 => 'lib/META6.pm',
+                     },
+                     license     => 'Artistic-2.0',
+                     production  => False,
+
+                 );
+
+print $m.to-json;
+
+my $m = META6.new(file => './META6.json');
+$m<version description> = v0.0.2, 'Work with Perl 6 META files even better';
+spurt('./META6.json', $m.to-json);
+
+=end code
+
+=head1 DESCRIPTION
+
+This provides a representation of the Perl 6 L<META
+files|http://design.perl6.org/S22.html#META6.json> specification -
+the META file data can be read, created , parsed and written in a manner
+that is conformant with the specification.
+
+Where they are known about it also makes allowance for "customary"
+usage in existing software (such as installers and so forth.)
+
+The intent of this is allow the generation and testing of META files for
+module authors, so it can provide meta-information whether the attributes
+are mandatory as per the spec and where known the places that "customary"
+attributes are used, though this doesn't preclude it being used for other
+purposes.
+
+=head1 METHODS
+
+All of the available attributes are documented in the specification so I
+won't duplicate here, only documenting the methods provided by the
+module.
+
+=head2 method new
+
+    multi method new(Str :$file!)
+    multi method new(IO::Path :$file!)
+    multi method new(IO::Handle :$file!)
+    multi method new(Str:D :$json!)
+
+This is the contructor of the class, it can take a named argument C<file>
+which can be the name of a file, an L<IO::Path> representing or a
+L<IO::Handle> opened to a file containing the META json. Alternatively an
+argument C<json> can be supplied which should contain the JSON string to
+be parsed as META info.
+
+If the file doesn't exist, cannot be opened, cannot be read or does not
+contain valid JSON and exception will be thrown.
+
+Additionally there still is the default constructor (as shown in the
+L<SYNOPSIS|#SYNOPSIS>,) that allows the population of the attributes
+directly (which may be useful when generating a META file.)
+
+=head2 method to-json
+
+    method to-json() returns Str
+
+This is provided by L<JSON::Class>. It will return the JSON string
+representation of the META info. The class should prevent there being
+anything that can't be represented as JSON so it shouldn't throw an
+exception.
+
+=head2 method AT-KEY
+
+    method AT-KEY($key)
+
+Support method to allow subscripts on META6 objects.
+
+=head2 method EXISTS-KEY
+
+    method EXISTS-KEY($key)
+
+Support method to allow subscripts on META6 objects.
+
+=end pod
 
 # vim: expandtab shiftwidth=4 ft=perl6
