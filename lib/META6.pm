@@ -248,8 +248,7 @@ class META6:ver<0.0.20>:auth<github:jonathanstowe>:ver<1.0> does JSON::Class doe
     has Str         $.auth          is rw is specification(Optional);
     has Str         $.api           is rw is specification(Optional) is json-skip-null;
 
-    method Str ()
-    {
+    multi method Str( --> Str ) {
         my $identifier = "$!name";
 
         $identifier ~= ":auth<{$!auth}>" if $!auth;
