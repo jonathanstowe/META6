@@ -138,13 +138,41 @@ class META6:ver<0.0.20>:auth<github:jonathanstowe>:ver<1.0> does JSON::Class doe
     has Str         $.auth          is rw is specification(Optional);
     has Str         $.api           is rw is specification(Optional) is json-skip-null;
 
-    method Str ()
-    {
+    multi method Str (
+        Bool:D :$termcolor where { !$_ } = False,
+    ) {
         my $identifier = "$!name";
 
         $identifier ~= ":auth<{$!auth}>" if $!auth;
         $identifier ~= ":version<{$!version}>" if $!version;
         $identifier ~= ":api<{$!api}>" if $!api;
+
+        $identifier;
+    }
+
+    multi method Str (
+        Bool:D :$termcolor where { $_ } = False
+    ) {
+        use Terminal::ANSIColor;
+
+        sub attribute (
+            Str:D $name,
+            Str() $value,
+            Str:D $color = "bold",
+            --> Str
+        ) {
+            colored(":", "black")
+            ~ colored($name, "white")
+            ~ colored("<", "black")
+            ~ colored($value, $color)
+            ~ colored(">", "black")
+        }
+
+        my $identifier = colored("$!name", "bold");
+
+        $identifier ~= attribute("auth", $!auth, "green") if $!auth;
+        $identifier ~= attribute("version", $!version, "cyan") if $!version;
+        $identifier ~= attribute("api", $!api, "blue") if $!api;
 
         $identifier;
     }
