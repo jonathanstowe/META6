@@ -36,6 +36,7 @@ print $m.to-json;
 
 my $m = META6.new(file => './META6.json');
 $m<version description> = v0.0.2, 'Work with Perl 6 META files even better';
+say 'Modules in the distribution: ' ~ $m<provides>.keys.join(', ');
 spurt('./META6.json', $m.to-json);
 ```
 ## Description
