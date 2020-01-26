@@ -55,6 +55,11 @@ are mandatory as per the spec and where known the places that "customary"
 attributes are used,
 
 
+### to-json
+
+See [JSON::Fast to-json()](https://github.com/timo/json_fast#to-json) for options. `sorted-keys`
+is recommended if you intend to modify the same file multiple times.
+
 ## Installation
 
 Assuming you have a working Rakudo Perl 6 installation you should be able to
