@@ -16,7 +16,8 @@
   "build-depends": [
   ],
   "depends": [
-    "JSON::Class:ver<0.0.5+>"
+    "JSON::Class:ver<0.0.5+>",
+    "JSON::Name"
   ],
   "tags": [
     "devel",
