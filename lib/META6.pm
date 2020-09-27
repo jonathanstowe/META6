@@ -232,7 +232,7 @@ class META6:ver<0.0.23>:auth<github:jonathanstowe> does JSON::Class does AutoAss
     has Str         @.authors       is rw is specification(Optional);
     has Str         $.author        is rw is customary is json-skip-null;
     has Str         %.provides      is rw is specification(Mandatory);
-    has Str         @.depends       is rw is specification(Optional);
+    has             $.depends       is rw is specification(Optional);
     has Str         %.emulates      is rw is specification(Optional) is json-skip-null;
     has Str         %.supersedes    is rw is specification(Optional) is json-skip-null;
     has Str         %.superseded-by is rw is specification(Optional) is json-skip-null;
