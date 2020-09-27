@@ -1,9 +1,9 @@
 {
   "name": "META6",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "auth": "github:jonathanstowe",
   "api": "1.0",
-  "description": "Work with Perl 6 META files",
+  "description": "Work with Raku META files",
   "source-url": "https://github.com/jonathanstowe/META6.git",
   "support": {
 	"email" : "jns+git@gellyfish.co.uk",
@@ -11,12 +11,13 @@
     "bugtracker": "https://github.com/jonathanstowe/META6/issues"
   },
   "perl": "6.*",
+  "raku": "6.*",
   "resources": [
   ],
   "build-depends": [
   ],
   "depends": [
-    "JSON::Class:ver<0.0.5+>",
+    "JSON::Class:ver<0.0.15+>",
     "JSON::Name"
   ],
   "tags": [
@@ -36,5 +37,5 @@
   "authors": [
     "Jonathan Stowe <jns+git@gellyfish.co.uk>"
   ],
-  "meta-version": "0"
+  "meta-version": "1"
 }

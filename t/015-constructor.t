@@ -7,14 +7,19 @@ use Test;
 use META6;
 
 my $meta;
+lives-ok { $meta = META6.new }, "create a META6 with no attributes";
+isa-ok $meta, META6, "and it's the right thing";
+
+lives-ok { $meta.to-json }, "it survives to-json";
 
 lives-ok { $meta = META6.new(version => Version.new(0), perl-version => $*PERL.version) }, "create a META6";
-
 isa-ok $meta, META6, "and it's the right thing";
 
 my $json;
 
-lives-ok { $json = $meta.to-json; }, "to-json";
+lives-ok {
+    $json = $meta.to-json;
+}, "to-json";
 
 lives-ok { $meta = META6.new(json => $json) }, "round-trip";
 

@@ -4,7 +4,7 @@ use v6;
 
 =head1 NAME
 
-META6 - Read, Parse, Generate Perl 6 META files.
+META6 - Read, Parse, Generate Raku META files.
 
 
 
@@ -17,7 +17,7 @@ The below will generate the C<META.info> for this module.
 use META6;
 
 my $m = META6.new(   name        => 'META6',
-                     description => 'Work with Perl 6 META files',
+                     description => 'Work with Raku META files',
                      version     => Version.new('0.0.1'),
                      perl        => Version.new('6'),
                      depends     => <JSON::Class>,
@@ -40,14 +40,14 @@ my $m = META6.new(   name        => 'META6',
 print $m.to-json;
 
 my $m = META6.new(file => './META6.json');
-$m<version description> = v0.0.2, 'Work with Perl 6 META files even better';
+$m<version description> = v0.0.2, 'Work with Raku META files even better';
 spurt('./META6.json', $m.to-json);
 
 =end code
 
 =head1 DESCRIPTION
 
-This provides a representation of the Perl 6 L<META
+This provides a representation of the Raku L<META
 files|http://design.perl6.org/S22.html#META6.json> specification -
 the META file data can be read, created , parsed and written in a manner
 that is conformant with the specification.
@@ -111,7 +111,7 @@ Support method to allow subscripts on META6 objects.
 =end pod
 
 use JSON::Name;
-use JSON::Class:ver(v0.0.5+);
+use JSON::Class:ver(v0.0.15+);
 
 role AutoAssoc {
     method AT-KEY($key) {
@@ -136,7 +136,7 @@ role AutoAssoc {
     }
 }
 
-class META6:ver<0.0.23>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
+class META6:ver<0.0.24>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
 
     enum Optionality <Mandatory Optional>;
 
@@ -211,28 +211,35 @@ class META6:ver<0.0.23>:auth<github:jonathanstowe> does JSON::Class does AutoAss
     }
 
     # cope with "v0.0.1"
-    sub unmarsh-version(Str() $v ) returns Version {
-        my $ver = Version.new($v);
-        if $ver.parts[0] eq 'v' {
-            my @parts = $ver.parts;
-            @parts.shift;
-            $ver = Version.new(@parts.join('.'));
-            warn 'prefix "v" seen in version string, this may not be what you want' unless $seen-vee;
-            $seen-vee = True;
+
+    multi sub unmarsh-version( $v --> Version ) {
+        if ( $v.defined ) {
+            my $ver = Version.new($v.Str);
+            if $ver.parts[0] eq 'v' {
+                my @parts = $ver.parts;
+                @parts.shift;
+                $ver = Version.new(@parts.join('.'));
+                warn 'prefix "v" seen in version string, this may not be what you want' unless $seen-vee;
+                $seen-vee = True;
+            }
+            $ver;
         }
-        $ver;
+        else {
+            Nil;
+        }
     }
 
 
     has Version     $.meta-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) = Version.new(0);
-    has Version     $.perl-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory) is json-name('perl');
+    has Version     $.perl-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('perl') is DEPRECATED('raku-version');
+    has Version     $.raku-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('raku');
     has Str         $.name          is rw is specification(Mandatory);
     has Version     $.version       is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory);
     has Str         $.description   is rw is specification(Mandatory);
     has Str         @.authors       is rw is specification(Optional);
     has Str         $.author        is rw is customary is json-skip-null;
     has Str         %.provides      is rw is specification(Mandatory);
-    has             $.depends       is rw is specification(Optional);
+    has             $.depends       is rw is specification(Optional) where Positional|Associative;
     has Str         %.emulates      is rw is specification(Optional) is json-skip-null;
     has Str         %.supersedes    is rw is specification(Optional) is json-skip-null;
     has Str         %.superseded-by is rw is specification(Optional) is json-skip-null;

@@ -13,7 +13,7 @@ my IO::Path $meta-path = $data-dir.add('META-V.info');
 
 my $obj;
 
-{ 
+{
     CONTROL {
         when CX::Warn {
             say $_.message;
@@ -27,7 +27,7 @@ my $obj;
 }
 
 is $obj.version, "0.0.1", "object get good version";
-is $obj.perl-version, "6", "got right perl version";
+is $obj.raku-version, "6", "got right raku version";
 
 is $warnings, 1, "got exactly 1 warning about v";
 
