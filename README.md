@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jonathanstowe/META6.svg?branch=master)](https://travis-ci.org/jonathanstowe/META6)
 
-Do things with Perl 6 [META files](http://design.perl6.org/S22.html#META6.json)
+Do things with Raku [META files](http://design.raku.org/S22.html#META6.json)
 
 ## Synopsis
 
@@ -12,7 +12,7 @@ The below will generate the  *META.info* for this module.
 use META6;
 
 my $m = META6.new(   name        => 'META6',
-                     description => 'Work with Perl 6 META files',
+                     description => 'Work with Raku META files',
                      version     => Version.new('0.0.1'),
                      perl-version   => Version.new('6.*'),
                      depends     => <JSON::Class>,
@@ -41,8 +41,8 @@ spurt('./META6.json', $m.to-json);
 ```
 ## Description
 
-This provides a representation of the Perl 6 [META
-files](http://design.perl6.org/S22.html#META6.json) specification -
+This provides a representation of the Raku [META
+files](http://design.raku.org/S22.html#META6.json) specification -
 the META file data can be read, created , parsed and written in a manner
 that is conformant with the specification.
 
@@ -62,7 +62,7 @@ is recommended if you intend to modify the same file multiple times.
 
 ## Installation
 
-Assuming you have a working Rakudo Perl 6 installation you should be able to
+Assuming you have a working Rakudo Raku installation you should be able to
 install this with *zef* :
 
     # From the source directory
