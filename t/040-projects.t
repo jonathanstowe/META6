@@ -23,6 +23,10 @@ my $projects;
     };
     lives-ok { $projects = Projects.from-json($json) }, "create an object from projects.json";
     ok all($projects.list) ~~ META6, "and they're all META6 objects";
+    for $projects.list -> $project {
+        ok $project.depends, "Depends is a "
+                ~ $project.depends.^name ~ " in "~ $project.name if $project.depends;
+    }
 }
 
 
