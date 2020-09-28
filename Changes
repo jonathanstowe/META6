@@ -1,4 +1,4 @@
-v0.0.23		Sun 27 Sep 22:00:54 BST 2020
+v0.0.24		Sun 27 Sep 22:00:54 BST 2020
 	* Allow for both positional and associative depends (from JJ,)
 	* Add raku attribute, optionalise and deprecate 'perl'
 	* Bump JSON::Class version to bring in fixes in JSON::Marshal
