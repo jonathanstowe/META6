@@ -27,6 +27,17 @@ my $projects;
         ok $project.depends, "Depends is a "
                 ~ $project.depends.^name ~ " in "~ $project.name if $project.depends;
     }
+
+    # Check a different kind of META, inline-perl, which should go last
+    my $inline-perl = $projects.list[*-1];
+    is( $inline-perl<depends>.keys.elems, 3,
+            "Correct number of keys in depends for Inline::Perl" );
+    ok( $inline-perl<depends><build><requires>,
+            "Parsing with Associative depends");
+    is( $inline-perl<depends><build><requires>.elems, 2,
+            "Right number of dependencies" );
+    is( $inline-perl<depends><build><requires>[1]<from>, "bin",
+            "Hashed dependencies are parsed" );
 }
 
 
