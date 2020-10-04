@@ -73,6 +73,7 @@ module.
     multi method new(IO::Path :$file!)
     multi method new(IO::Handle :$file!)
     multi method new(Str:D :$json!)
+    multi method new(*%items)
 
 This is the contructor of the class, it can take a named argument C<file>
 which can be the name of a file, an L<IO::Path> representing or a
