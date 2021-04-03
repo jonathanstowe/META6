@@ -2,6 +2,8 @@
 
 Do things with Raku [META files](http://design.raku.org/S22.html#META6.json)
 
+[![CI](https://github.com/jonathanstowe/META6/actions/workflows/main.yml/badge.svg)](https://github.com/jonathanstowe/META6/actions/workflows/main.yml)
+
 ## Synopsis
 
 The below will generate the  *META6.json* for this module.
