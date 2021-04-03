@@ -1,4 +1,4 @@
-#! /usr/bin/env perl6
+#! /usr/bin/env raku
 
 use v6;
 
@@ -23,4 +23,4 @@ is META6.new(
     :api(~3)
 ).Str, "Some::Other::Test:version<3.4.5>:api<3>", "Stringification with version and api";
 
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

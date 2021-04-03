@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 
@@ -25,4 +25,4 @@ lives-ok { $meta = META6.new(json => $json) }, "round-trip";
 
 
 done-testing;
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

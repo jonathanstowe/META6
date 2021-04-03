@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 use Test;
@@ -36,4 +36,4 @@ is $obj<support><source>, 'spicy', 'Support is writable';
 #is $obj<version perl>, '0.0.3 7', 'Hash set list of keys';
 
 done-testing;
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

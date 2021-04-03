@@ -17,23 +17,25 @@ The below will generate the C<META.info> for this module.
 use META6;
 
 my $m = META6.new(   name        => 'META6',
-                     description => 'Work with Raku META files',
                      version     => Version.new('0.0.1'),
-                     perl        => Version.new('6'),
-                     depends     => <JSON::Class>,
-                     test-depends   => <Test>,
+                     auth        => 'github:jonathanstowe',
+                     api         => '1.0',
+                     description => 'Work with Raku META files',
+                     raku-version   => Version.new('6.*'),
+                     depends     => ['JSON::Class:ver<0.0.15+>', 'JSON::Name' ],
+                     test-depends   => <Test JSON::Fast>,
                      tags        => <devel meta utils>,
                      authors     => ['Jonathan Stowe <jns+git@gellyfish.co.uk>'],
-                     auth        => 'github:jonathanstowe',
-                     source-url  => 'git://github.com/jonathanstowe/META6.git',
+                     source-url  => 'https://github.com/jonathanstowe/META6.git',
                      support     => META6::Support.new(
-                        source => 'git://github.com/jonathanstowe/META6.git'
+                        source => 'https://github.com/jonathanstowe/META6.git'
                      ),
                      provides => {
                         META6 => 'lib/META6.pm',
                      },
-                     license     => 'Artistic-2.0',
+                     license     => 'Artistic',
                      production  => False,
+                     meta-version   => 1,
 
                  );
 
@@ -48,7 +50,7 @@ spurt('./META6.json', $m.to-json);
 =head1 DESCRIPTION
 
 This provides a representation of the Raku L<META
-files|http://design.perl6.org/S22.html#META6.json> specification -
+files|http://design.raku.org/S22.html#META6.json> specification -
 the META file data can be read, created , parsed and written in a manner
 that is conformant with the specification.
 
@@ -137,7 +139,7 @@ role AutoAssoc {
     }
 }
 
-class META6:ver<0.0.24>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
+class META6:ver<0.0.25>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
 
     enum Optionality <Mandatory Optional>;
 
@@ -232,7 +234,7 @@ class META6:ver<0.0.24>:auth<github:jonathanstowe> does JSON::Class does AutoAss
 
 
     has Version     $.meta-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) = Version.new(0);
-    has Version     $.perl-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('perl') is DEPRECATED('raku-version');
+    has Version     $.perl-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('perl') is json-skip-null is DEPRECATED('raku-version');
     has Version     $.raku-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('raku');
     has Str         $.name          is rw is specification(Mandatory);
     has Version     $.version       is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory);
@@ -269,4 +271,4 @@ class META6:ver<0.0.24>:auth<github:jonathanstowe> does JSON::Class does AutoAss
 
 multi sub postcircumfix:<{ }>(META6 \SELF, Iterable \key, Mu \ASSIGN) is raw {}
 
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

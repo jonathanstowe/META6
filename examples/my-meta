@@ -3,7 +3,7 @@
 use META6;
 
 my $m = META6.new(   name           => 'META6',
-                     description    => 'Work with Perl 6 META files',
+                     description    => 'Work with Raku META files',
                      version        => Version.new('0.0.1'),
                      raku-version   => Version.new('6'),
                      depends        => ['JSON::Class>'],

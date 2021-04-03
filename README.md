@@ -1,34 +1,34 @@
 # META6
 
-[![Build Status](https://travis-ci.org/jonathanstowe/META6.svg?branch=master)](https://travis-ci.org/jonathanstowe/META6)
-
 Do things with Raku [META files](http://design.raku.org/S22.html#META6.json)
 
 ## Synopsis
 
-The below will generate the  *META.info* for this module.
+The below will generate the  *META6.json* for this module.
 
 ```
 use META6;
 
 my $m = META6.new(   name        => 'META6',
-                     description => 'Work with Raku META files',
                      version     => Version.new('0.0.1'),
-                     perl-version   => Version.new('6.*'),
-                     depends     => <JSON::Class>,
-                     test-depends   => <Test>,
+                     auth        => 'github:jonathanstowe',
+                     api         => '1.0',
+                     description => 'Work with Raku META files',
+                     raku-version   => Version.new('6.*'),
+                     depends     => ['JSON::Class:ver<0.0.15+>', 'JSON::Name' ],
+                     test-depends   => <Test JSON::Fast>,
                      tags        => <devel meta utils>,
                      authors     => ['Jonathan Stowe <jns+git@gellyfish.co.uk>'],
-                     auth        => 'github:jonathanstowe',
-                     source-url  => 'git://github.com/jonathanstowe/META6.git',
+                     source-url  => 'https://github.com/jonathanstowe/META6.git',
                      support     => META6::Support.new(
-                        source => 'git://github.com/jonathanstowe/META6.git'
+                        source => 'https://github.com/jonathanstowe/META6.git'
                      ),
                      provides => {
                         META6 => 'lib/META6.pm',
                      },
                      license     => 'Artistic',
                      production  => False,
+                     meta-version   => 1,
 
                  );
 
@@ -62,8 +62,7 @@ is recommended if you intend to modify the same file multiple times.
 
 ## Installation
 
-Assuming you have a working Rakudo Raku installation you should be able to
-install this with *zef* :
+Assuming you have a working Rakudo installation you should be able to install this with *zef* :
 
     # From the source directory
    
@@ -75,7 +74,7 @@ install this with *zef* :
 
 ## Support
 
-Suggestions/patches are welcomed via github at https://github.com/jonathanstowe/META6
+Suggestions/patches are welcomed via [github](https://github.com/jonathanstowe/META6)
 
 I'm particulary interested in knowing about "customary" (i.e. non-spec)
 fields that are being used in the wild and in what software so I can
@@ -83,7 +82,8 @@ add them if necessary.
 
 ## Licence
 
-Please see the [LICENCE](LICENCE) file in the distribution
+This free software.
 
-© Jonathan Stowe 2015 - 2019
+Please see the [LICENCE](LICENCE) file in the distribution for the details.
 
+© Jonathan Stowe 2015 - 2021
