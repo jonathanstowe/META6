@@ -1,6 +1,6 @@
 {
   "name": "META6",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "auth": "github:jonathanstowe",
   "api": "1.0",
   "description": "Work with Raku META files",
@@ -10,7 +10,6 @@
     "source": "https://github.com/jonathanstowe/META6.git",
     "bugtracker": "https://github.com/jonathanstowe/META6/issues"
   },
-  "perl": "6.*",
   "raku": "6.*",
   "resources": [
   ],

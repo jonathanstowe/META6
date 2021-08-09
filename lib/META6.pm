@@ -234,7 +234,6 @@ class META6:ver<0.0.25>:auth<github:jonathanstowe> does JSON::Class does AutoAss
 
 
     has Version     $.meta-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) = Version.new(0);
-    has Version     $.perl-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('perl') is json-skip-null is DEPRECATED('raku-version');
     has Version     $.raku-version  is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Optional) is json-name('raku');
     has Str         $.name          is rw is specification(Mandatory);
     has Version     $.version       is rw is marshalled-by('Str') is unmarshalled-by(&unmarsh-version) is specification(Mandatory);

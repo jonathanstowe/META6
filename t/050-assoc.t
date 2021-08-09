@@ -17,7 +17,7 @@ lives-ok { $obj = META6.new(file => $meta-path) }, "load META.info";
 
 is $obj.version, '0.0.1', "just check version";
 is $obj<version>, '0.0.1', 'Hash get good version';
-is $obj<version perl>, '0.0.1 6', 'Hash get list of keys';
+is $obj<version raku>, '0.0.1 6', 'Hash get list of keys';
 
 is $obj<version>:exists, True, 'Hash key exists';
 is $obj<isnthere>:exists, False, 'Hash key does not exist';

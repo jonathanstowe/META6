@@ -1,3 +1,5 @@
+v0.0.26		Mon  9 Aug 17:55:38 BST 2021
+	* Remove previously deprecated 'perl' attribute
 v0.0.25		Sat  3 Apr 12:18:14 BST 2021
 	* Light renaming
 	* Gentle spring cleaning

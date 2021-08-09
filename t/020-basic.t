@@ -27,7 +27,7 @@ lives-ok { $json = $obj.to-json }, "call to-json";
 my $h = from-json($json);
 
 is $h<version>, "0.0.1", "version is right";
-is $h<perl>, "6", "perl is right";
+is $h<raku>, "6", "perl is right";
 nok $h<excludes>:exists, "and it skipped excludes";
 
 for $obj.^attributes -> $attr {
