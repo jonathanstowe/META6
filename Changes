@@ -1,3 +1,5 @@
+v0.0.27	Sun  7 Aug 09:42:48 BST 2022
+	* Upload to zef repository
 v0.0.26		Mon  9 Aug 17:55:38 BST 2021
 	* Remove previously deprecated 'perl' attribute
 v0.0.25		Sat  3 Apr 12:18:14 BST 2021
@@ -53,3 +55,4 @@ v0.0.4		Sun Jan 3 11:24:26 2016 +0000
 	* Up the version
 		 
 	* Add POD
+

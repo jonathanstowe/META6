@@ -1,40 +1,40 @@
 {
-  "name": "META6",
-  "version": "0.0.26",
-  "auth": "github:jonathanstowe",
-  "api": "1.0",
-  "description": "Work with Raku META files",
-  "source-url": "https://github.com/jonathanstowe/META6.git",
-  "support": {
-	"email" : "jns+git@gellyfish.co.uk",
-    "source": "https://github.com/jonathanstowe/META6.git",
-    "bugtracker": "https://github.com/jonathanstowe/META6/issues"
-  },
-  "raku": "6.*",
   "resources": [
   ],
-  "build-depends": [
-  ],
-  "depends": [
-    "JSON::Class:ver<0.0.15+>",
-    "JSON::Name"
-  ],
+  "description": "Work with Raku META files",
   "tags": [
     "devel",
     "meta",
     "utils"
   ],
+  "build-depends": [
+  ],
+  "source-url": "https://github.com/jonathanstowe/META6.git",
+  "support": {
+    "email": "jns+git@gellyfish.co.uk",
+    "source": "https://github.com/jonathanstowe/META6.git",
+    "bugtracker": "https://github.com/jonathanstowe/META6/issues"
+  },
+  "api": "1.0",
+  "production": true,
+  "auth": "zef:jonathanstowe",
   "license": "Artistic-2.0",
+  "name": "META6",
+  "version": "0.0.27",
+  "provides": {
+    "META6": "lib/META6.pm"
+  },
+  "authors": [
+    "Jonathan Stowe <jns+git@gellyfish.co.uk>"
+  ],
+  "raku": "6.*",
   "test-depends": [
     "JSON::Fast",
     "Test"
   ],
-  "provides": {
-    "META6": "lib/META6.pm"
-  },
-  "production": true,
-  "authors": [
-    "Jonathan Stowe <jns+git@gellyfish.co.uk>"
+  "depends": [
+    "JSON::Class:ver<0.0.15+>",
+    "JSON::Name"
   ],
   "meta-version": "1"
 }
