@@ -20,9 +20,9 @@
   "auth": "zef:jonathanstowe",
   "license": "Artistic-2.0",
   "name": "META6",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "provides": {
-    "META6": "lib/META6.pm"
+    "META6": "lib/META6.rakumod"
   },
   "authors": [
     "Jonathan Stowe <jns+git@gellyfish.co.uk>"

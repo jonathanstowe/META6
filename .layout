@@ -6,7 +6,7 @@
       "type": "directory",
       "children": [
         {
-          "name": "my-meta.pl",
+          "name": "my-meta",
           "type": "file"
         }
       ]
@@ -74,7 +74,7 @@
       "name": "lib",
       "children": [
         {
-          "name": "META6.pm",
+          "name": "META6.rakumod",
           "type": "file"
         }
       ],
