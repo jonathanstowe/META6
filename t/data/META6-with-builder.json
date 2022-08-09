@@ -1,0 +1,49 @@
+{
+  "tags": [
+    "unix",
+    "users",
+    "utility"
+  ],
+  "author": "Jonathan Stowe <jns+git@gellyfish.co.uk>",
+  "description": "Raku access to Utmp entries on Unix-like systems",
+  "version": "0.1.2",
+  "raku": "6.*",
+  "meta-version": "1",
+  "license": "Artistic-2.0",
+  "authors": [
+    "Jonathan Stowe <jns+git@gellyfish.co.uk>"
+  ],
+  "resources": [
+    "libraries/utmphelper"
+  ],
+  "api": "1.0",
+  "source-url": "git://github.com/jonathanstowe/Raku-Sys-Utmp.git",
+  "auth": "zef:jonathanstowe",
+  "support": {
+    "irc": "irc:// irc.freenode.net/#perl6",
+    "bugtracker": "https://github.com/jonathanstowe/Raku-Sys-Utmp/issues",
+    "source": "git://github.com/jonathanstowe/Raku-Sys-Utmp.git"
+  },
+  "depends": {
+    "runtime": {
+      "requires": [
+      ]
+    },
+    "build": {
+      "requires": [
+        "Distribution::Builder::MakeFromJSON:ver<0.6+>"
+      ]
+    }
+  },
+  "builder": "Distribution::Builder::MakeFromJSON",
+  "build" : {
+     "src-dir" : "src",
+     "makefile-variables" : {
+        "utmphelper": {"resource": "libraries/utmphelper"}
+     }
+  },
+  "provides": {
+    "Sys::Utmp": "lib/Sys/Utmp.pm"
+  },
+  "name": "Sys::Utmp"
+}

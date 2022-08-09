@@ -30,7 +30,11 @@
             {
               "type": "file",
               "name": "META6.json"
-            }
+            },
+			{
+				"name": "META6-with-builder.json",
+				"type": "file"
+			}
           ],
           "name": "data",
           "purpose": null
@@ -45,6 +49,14 @@
         },
         {
           "name": "060-stringify.t",
+          "type": "file"
+        },
+        {
+          "name": "070-modules_load.t",
+          "type": "file"
+        },
+        {
+          "name": "080-round-trip.t",
           "type": "file"
         },
         {

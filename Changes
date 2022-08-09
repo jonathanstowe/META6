@@ -1,3 +1,5 @@
+v0.0.29		Tue  9 Aug 10:09:56 BST 2022
+	* Support 'build' and 'builder' keys
 v0.0.28	Mon  8 Aug 08:02:28 BST 2022
 	* Fix layout
 v0.0.27	Sun  7 Aug 09:42:48 BST 2022

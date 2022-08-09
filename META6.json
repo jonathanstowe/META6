@@ -7,8 +7,6 @@
     "meta",
     "utils"
   ],
-  "build-depends": [
-  ],
   "source-url": "https://github.com/jonathanstowe/META6.git",
   "support": {
     "email": "jns+git@gellyfish.co.uk",
@@ -20,7 +18,7 @@
   "auth": "zef:jonathanstowe",
   "license": "Artistic-2.0",
   "name": "META6",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "provides": {
     "META6": "lib/META6.rakumod"
   },

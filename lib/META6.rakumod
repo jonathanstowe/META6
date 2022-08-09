@@ -139,7 +139,7 @@ role AutoAssoc {
     }
 }
 
-class META6:ver<0.0.25>:auth<github:jonathanstowe> does JSON::Class does AutoAssoc {
+class META6 does JSON::Class does AutoAssoc {
 
     enum Optionality <Mandatory Optional>;
 
@@ -246,8 +246,8 @@ class META6:ver<0.0.25>:auth<github:jonathanstowe> does JSON::Class does AutoAss
     has Str         %.supersedes    is rw is specification(Optional) is json-skip-null;
     has Str         %.superseded-by is rw is specification(Optional) is json-skip-null;
     has Str         %.excludes      is rw is specification(Optional) is json-skip-null;
-    has Str         @.build-depends is rw is specification(Optional);
-    has Str         @.test-depends  is rw is specification(Optional);
+    has Str         @.build-depends is rw is specification(Optional) is json-skip-null;
+    has Str         @.test-depends  is rw is specification(Optional) is json-skip-null;
     has Str         @.resources     is rw is specification(Optional);
     has Support     $.support       is rw is specification(Optional) = Support.new;
     has Bool        $.production    is rw is specification(Optional) is json-skip-null;
@@ -256,6 +256,8 @@ class META6:ver<0.0.25>:auth<github:jonathanstowe> does JSON::Class does AutoAss
     has Str         $.source-url    is rw is customary;
     has Str         $.auth          is rw is specification(Optional);
     has Str         $.api           is rw is specification(Optional) is json-skip-null;
+    has Str         $.builder       is rw is specification(Optional) is json-skip-null;
+    has             %.build         is rw is specification(Optional) is json-skip-null;
 
     multi method Str( --> Str ) {
         my $identifier = "$!name";
