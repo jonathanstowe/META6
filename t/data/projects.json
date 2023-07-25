@@ -2758,7 +2758,6 @@
          "Farabi6" : "lib/Farabi6.pm6",
          "Farabi6::Util" : "lib/Farabi6/Util.pm6"
       },
-      "resources" : {},
       "name" : "Farabi6",
       "depends" : [
          "File::Temp",

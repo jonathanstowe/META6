@@ -1,3 +1,6 @@
+v0.0.30		Tue 25 Jul 18:24:09 BST 2023
+	* Up version of JSON::Class
+	* Change some test data
 v0.0.29		Tue  9 Aug 10:09:56 BST 2022
 	* Support 'build' and 'builder' keys
 v0.0.28	Mon  8 Aug 08:02:28 BST 2022

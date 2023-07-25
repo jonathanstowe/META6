@@ -114,7 +114,7 @@ Support method to allow subscripts on META6 objects.
 =end pod
 
 use JSON::Name;
-use JSON::Class:ver(v0.0.15+);
+use JSON::Class:ver(v0.0.20+);
 
 role AutoAssoc {
     method AT-KEY($key) {
@@ -241,7 +241,7 @@ class META6 does JSON::Class does AutoAssoc {
     has Str         @.authors       is rw is specification(Optional);
     has Str         $.author        is rw is customary is json-skip-null;
     has Str         %.provides      is rw is specification(Mandatory);
-    has             $.depends       is rw is specification(Optional) where Positional|Associative;
+    has             $.depends       is rw is specification(Optional) is json-skip-null where Positional|Associative;
     has Str         %.emulates      is rw is specification(Optional) is json-skip-null;
     has Str         %.supersedes    is rw is specification(Optional) is json-skip-null;
     has Str         %.superseded-by is rw is specification(Optional) is json-skip-null;
