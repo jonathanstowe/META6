@@ -31,7 +31,7 @@
     "Test"
   ],
   "depends": [
-    "JSON::Class:ver<0.0.20+>",
+    "JSON::Class:ver<0.0.20+>:auth<zef:jonathanstowe>:api<1.0>",
     "JSON::Name"
   ],
   "meta-version": "1"
