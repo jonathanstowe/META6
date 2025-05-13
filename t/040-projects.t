@@ -22,7 +22,18 @@ my $projects;
         }
     };
     lives-ok { $projects = Projects.from-json($json) }, "create an object from projects.json";
-    ok all($projects.list) ~~ META6, "and they're all META6 objects";
+
+    # Due to possible regressions in early 2025 versions of Rakudo on Windows,
+    # the all(List) ~~ Type is not behaving consistently across OSes and versions.
+    # To solve this, the logic below has been unfurled into basic operations to ensure compatibility.
+    # Original test: ok all($projects.list) ~~ META6, "and they're all META6 objects";
+    {
+        ok $projects.list.elems > 0, "and the project list has elements";
+        for $projects.list -> $project {
+                ok $project ~~ META6, "and they're all META6 objects";
+        }
+    }
+
     for $projects.list -> $project {
         ok $project.depends, "Depends is a "
                 ~ $project.depends.^name ~ " in "~ $project.name if $project.depends;
