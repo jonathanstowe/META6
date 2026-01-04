@@ -1,3 +1,5 @@
+v0.0.31		Sun  4 Jan 15:59:56 GMT 2026
+	* Fix for windows from samgwise
 v0.0.30		Tue 25 Jul 18:24:09 BST 2023
 	* Up version of JSON::Class
 	* Change some test data

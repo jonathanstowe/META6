@@ -18,7 +18,7 @@
   "auth": "zef:jonathanstowe",
   "license": "Artistic-2.0",
   "name": "META6",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "provides": {
     "META6": "lib/META6.rakumod"
   },
