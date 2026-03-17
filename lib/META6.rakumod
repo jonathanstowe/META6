@@ -35,7 +35,7 @@ my $m = META6.new(   name        => 'META6',
                      },
                      license     => 'Artistic',
                      production  => False,
-                     meta-version   => 1,
+                     meta-version   => Version.new('1'),
 
                  );
 
