@@ -33,7 +33,7 @@ my $m = META6.new(   name        => 'META6',
                      provides => {
                         META6 => 'lib/META6.pm',
                      },
-                     license     => 'Artistic',
+                     license     => 'Artistic-2.0',
                      production  => False,
                      meta-version   => 1,
 
